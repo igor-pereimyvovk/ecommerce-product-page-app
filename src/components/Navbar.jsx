@@ -4,7 +4,7 @@ import Item from "./Item";
 import LogoSvgIcon from "./UI/LogoSvgIcon";
 import NavbarWrapper from "./UI/NavbarWrapper";
 import MenuItems from "./UI/MenuItems";
-import CartSvgIcon from "./UI/CartSvgIcon";
+import CartWithModal from "./UI/CartWithModal";
 import UserIcon from "./UI/UserIcon";
 import { menuItems } from "../data/menuItems";
 
@@ -34,7 +34,7 @@ const Navbar = () => {
                 </MenuItems>
             </Box>
             <Box display="flex" gap="2.2rem" alignItems="center">
-                <CartSvgIcon />
+                <CartWithModal />
                 <UserIcon />
             </Box>
         </NavbarWrapper>

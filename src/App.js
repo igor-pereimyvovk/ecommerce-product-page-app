@@ -4,6 +4,7 @@ import { theme } from "./theme/theme";
 import { store } from "./store/store";
 import Navbar from "./components/Navbar";
 import ProductPage from "./components/ProductPage";
+import { product } from "./data/product";
 
 function App() {
     return (
@@ -12,7 +13,7 @@ function App() {
                 <CssBaseline />
                 <Container maxWidth="main-container">
                     <Navbar />
-                    <ProductPage />
+                    <ProductPage item={product} />
                 </Container>
             </ThemeProvider>
         </Provider>

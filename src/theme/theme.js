@@ -1,6 +1,15 @@
 import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
+    components: {
+        MuiContainer: {
+            styleOverrides: {
+                root: {
+                    padding: "0 100px",
+                },
+            },
+        },
+    },
     typography: {
         fontFamily: "Kumbh Sans, sans-serif",
     },
@@ -24,7 +33,7 @@ export const theme = createTheme({
     },
     breakpoints: {
         values: {
-            ["main-container"]: 1080,
+            ["main-container"]: 1440,
         },
     },
 });
