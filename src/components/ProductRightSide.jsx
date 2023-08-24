@@ -3,13 +3,16 @@ import { calculateDiscountPrice } from "../features/calculateDiscountPrice";
 import { Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
 import IncreaseDecreaseCountButton from "./UI/IncreaseDecreaseCountButton";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectProduct } from "../store/product/productSlice";
+import { addProductToCart, selectProducts } from "../store/cart/cartSlice";
 
 const ProductRightSide = () => {
     const [productCount, setProductCount] = useState(0);
-    const { name, description, price, discount, company } =
-        useSelector(selectProduct);
+    const product = useSelector(selectProduct);
+    const products = useSelector(selectProducts);
+    const { name, description, price, discount, company } = product;
+    const dispatch = useDispatch();
 
     const theme = useTheme();
 
@@ -18,6 +21,15 @@ const ProductRightSide = () => {
     if (discount) {
         discountPrice = calculateDiscountPrice(price, discount);
     }
+
+    console.log(products);
+
+    const handleClick = () => {
+        if (productCount) {
+            dispatch(addProductToCart(product, discountPrice, productCount));
+        }
+    };
+
     return (
         <Box flex={1} justifySelf="center">
             <Typography
@@ -40,7 +52,6 @@ const ProductRightSide = () => {
                     fontWeight: "bold",
                     color: theme.palette.neutral.veryDarkBlue,
                     marginBottom: "2rem",
-                    // fontSize: "clamp(16px, 0.938rem + 10.663vw, 6.483rem)",
                     ["@media(max-width:1440px)"]: {
                         fontSize: "clamp(35px, 3.4vw, 48px)",
                     },
@@ -139,6 +150,7 @@ const ProductRightSide = () => {
                 <Button
                     variant="contained"
                     disableElevation
+                    onClick={handleClick}
                     sx={{
                         flex: 1.8,
                         display: "flex",

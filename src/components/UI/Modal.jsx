@@ -3,30 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     selectAmount,
     selectIsOpen,
-    toggleCartModal,
+    selectProducts,
 } from "../../store/cart/cartSlice";
 import { useTheme } from "@emotion/react";
-import { useEffect } from "react";
 
 const Modal = () => {
     const dispatch = useDispatch();
+    const cartProducts = useSelector(selectProducts);
     const amount = useSelector(selectAmount);
     const isOpen = useSelector(selectIsOpen);
 
     const theme = useTheme();
-
-    // console.log("render modal");
-    // console.log(isOpen);
-
-    // useEffect(() => {
-    //     console.log("effect---------------");
-    //     if (isOpen) {
-    //         console.log("open => listener--------------");
-    //         document.addEventListener("click", () => {
-    //             dispatch(toggleCartModal());
-    //         });
-    //     }
-    // }, [isOpen]);
 
     return (
         <Paper
@@ -57,14 +44,15 @@ const Modal = () => {
                 sx={{
                     padding: "1rem",
                     minHeight: "200px",
-                    display: "flex",
-                    flexDirection: "column",
+                    // display: "flex",
                     gap: "1rem",
                 }}
             >
                 {amount ? (
                     <>
-                        <Box>hello</Box>
+                        <Box display="flex" flexDirection="column" gap={2}>
+                            {/* TODOOOOOOOOOOOO */}
+                        </Box>
                     </>
                 ) : (
                     <Typography
@@ -75,6 +63,7 @@ const Modal = () => {
                             justifyContent: "center",
                             alignItems: "center",
                             height: "168px",
+                            // width: "100%",
                         }}
                     >
                         Your cart is empty
