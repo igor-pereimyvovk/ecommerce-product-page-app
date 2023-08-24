@@ -1,14 +1,16 @@
 import { useTheme } from "@emotion/react";
 import { calculateDiscountPrice } from "../features/calculateDiscountPrice";
-import { Box, Button, IconButton, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
 import IncreaseDecreaseCountButton from "./UI/IncreaseDecreaseCountButton";
-// import { plus } from "./../assets/images/icon-plus.svg";
+import { useSelector } from "react-redux";
+import { selectProduct } from "../store/product/productSlice";
 
-const ProductRightSide = ({
-    product: { name, description, price, discount, company },
-}) => {
+const ProductRightSide = () => {
     const [productCount, setProductCount] = useState(0);
+    const { name, description, price, discount, company } =
+        useSelector(selectProduct);
+
     const theme = useTheme();
 
     let discountPrice = price;
@@ -24,6 +26,9 @@ const ProductRightSide = ({
                     color: theme.palette.primary.main,
                     letterSpacing: "1.4px",
                     marginBottom: "1.3rem",
+                    ["@media(max-width:1440px)"]: {
+                        fontSize: "clamp(12px, 1.1vw, 16px)",
+                    },
                 }}
             >
                 {company.toUpperCase()} COMPANY
@@ -35,6 +40,10 @@ const ProductRightSide = ({
                     fontWeight: "bold",
                     color: theme.palette.neutral.veryDarkBlue,
                     marginBottom: "2rem",
+                    // fontSize: "clamp(16px, 0.938rem + 10.663vw, 6.483rem)",
+                    ["@media(max-width:1440px)"]: {
+                        fontSize: "clamp(35px, 3.4vw, 48px)",
+                    },
                 }}
             >
                 {name}
@@ -46,6 +55,9 @@ const ProductRightSide = ({
                     fontSize: "18px",
                     letterSpacing: "1.1px",
                     marginBottom: "1.8rem",
+                    ["@media(max-width:1440px)"]: {
+                        fontSize: "clamp(12px, 1.3vw, 18px)",
+                    },
                 }}
             >
                 {description}
@@ -65,7 +77,15 @@ const ProductRightSide = ({
                         marginBottom: "0.6rem",
                     }}
                 >
-                    <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                    <Typography
+                        variant="h4"
+                        sx={{
+                            fontWeight: "bold",
+                            ["@media(max-width:1440px)"]: {
+                                fontSize: "clamp(24px, 2.3vw, 34px)",
+                            },
+                        }}
+                    >
                         ${discountPrice.toFixed(2)}
                     </Typography>
                     {discount && (
@@ -130,6 +150,12 @@ const ProductRightSide = ({
                         color: theme.palette.neutral.white,
                         py: 1.5,
                         borderRadius: "10px",
+                        ["@media(max-width:1240px)"]: {
+                            flex: 1.1,
+                            fontSize: "11px",
+                            py: 1.9,
+                            gap: "12px",
+                        },
                     }}
                 >
                     <svg

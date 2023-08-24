@@ -15,7 +15,7 @@ const IncreaseDecreaseCountButton = ({ productCount, setProductCount }) => {
             flex={1}
             display="flex"
             borderRadius={1.4}
-            sx={{ background: "hsl(223, 64%, 96%)" }}
+            sx={{ background: "hsl(223, 64%, 96.5%)" }}
             // sx={{ background: theme.palette.neutral.lightGrayishBlue }}
         >
             <Box

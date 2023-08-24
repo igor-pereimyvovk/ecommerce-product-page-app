@@ -1,26 +1,48 @@
 import { Box, Typography } from "@mui/material";
 import ProductPageWrapper from "./UI/ProductPageWrapper";
 import { useTheme } from "@emotion/react";
-import { calculateDiscountPrice } from "../features/calculateDiscountPrice";
 import ProductRightSide from "./ProductRightSide";
+import { useSelector } from "react-redux";
+import { selectProduct } from "../store/product/productSlice";
 
-const ProductPage = ({ product }) => {
-    const theme = useTheme();
-
-    let discountPrice = product.price;
-
-    if (product.discount) {
-        discountPrice = calculateDiscountPrice(product.price, product.discount);
-    }
+const ProductPage = () => {
+    const product = useSelector(selectProduct);
 
     return (
         <ProductPageWrapper>
             {/* Left */}
-            <Box flex={1}>Images</Box>
+            <Box flex={1}>
+                <Box mb={4} borderRadius="10px" overflow="hidden">
+                    <img
+                        style={{ verticalAlign: "top" }}
+                        width="100%"
+                        src={product.img.big[0]}
+                        alt="big"
+                    />
+                </Box>
+                <Box display="flex" justifyContent="space-between">
+                    {product.img.small.map((img) => (
+                        <Box
+                            key={img}
+                            sx={{
+                                width: "20%",
+                                borderRadius: "10px",
+                                overflow: "hidden",
+                            }}
+                        >
+                            <img
+                                style={{ verticalAlign: "top" }}
+                                width="100%"
+                                src={img}
+                                alt="small"
+                            />
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
             {/* Right */}
-            <ProductRightSide product={product} />
+            <ProductRightSide />
         </ProductPageWrapper>
     );
 };
-
 export default ProductPage;
