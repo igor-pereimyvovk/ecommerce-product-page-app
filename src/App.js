@@ -13,7 +13,7 @@ function App() {
                 <CssBaseline />
                 <Container maxWidth="main-container">
                     <Navbar />
-                    <ProductPage item={product} />
+                    <ProductPage product={product} />
                 </Container>
             </ThemeProvider>
         </Provider>

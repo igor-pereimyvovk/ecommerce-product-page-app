@@ -13,11 +13,12 @@ const cartSlice = createSlice({
         toggleCartModal(state) {
             state.isOpen = !state.isOpen;
         },
+        addProductToCart(state, action) {},
     },
 });
 
 export const selectIsOpen = (state) => state.cart.isOpen;
 export const selectAmount = (state) => state.cart.amount;
 
-export const { toggleCartModal } = cartSlice.actions;
+export const { toggleCartModal, addProductToCart } = cartSlice.actions;
 export default cartSlice.reducer;
