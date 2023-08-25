@@ -1,7 +1,6 @@
 import { useTheme } from "@emotion/react";
 import { Box, Typography } from "@mui/material";
 import ProductButton from "./ProductButton";
-import RemoveIcon from "@mui/icons-material/Remove";
 
 const IncreaseDecreaseCountButton = ({ productCount, setProductCount }) => {
     const theme = useTheme();
@@ -23,7 +22,7 @@ const IncreaseDecreaseCountButton = ({ productCount, setProductCount }) => {
             // sx={{ background: theme.palette.neutral.lightGrayishBlue }}
         >
             <ProductButton onClick={decreaseCount}>
-                {/* <svg
+                <svg
                     width="12"
                     height="4"
                     viewBox="0 0 12 4"
@@ -33,12 +32,12 @@ const IncreaseDecreaseCountButton = ({ productCount, setProductCount }) => {
                     <defs>
                         <path
                             d="M11.357 3.332A.641.641 0 0 0 12 2.69V.643A.641.641 0 0 0 11.357 0H.643A.641.641 0 0 0 0 .643v2.046c0 .357.287.643.643.643h10.714Z"
-                            id="a"
+                            id="d"
+                            fill="#FF7E1B"
                         />
                     </defs>
-                    <use fill="#FF7E1B" xlinkHref="#a" />
-                </svg> */}
-                <RemoveIcon />
+                    <use fill="#FF7E1B" xlinkHref="#d" />
+                </svg>
             </ProductButton>
             <Typography
                 fontWeight="bold"

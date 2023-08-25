@@ -9,7 +9,6 @@ import { useTheme } from "@emotion/react";
 import CartItem from "../CartItem";
 
 const Modal = () => {
-    const dispatch = useDispatch();
     const cartProducts = useSelector(selectProducts);
     const amount = useSelector(selectAmount);
     const isOpen = useSelector(selectIsOpen);

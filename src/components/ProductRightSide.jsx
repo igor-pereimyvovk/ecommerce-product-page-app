@@ -27,7 +27,7 @@ const ProductRightSide = () => {
     const handleClick = (e) => {
         e.stopPropagation();
         if (productCount) {
-            // setProductCount(0);
+            setProductCount(0);
             dispatch(addProductToCart(product, discountPrice, productCount));
         }
     };
