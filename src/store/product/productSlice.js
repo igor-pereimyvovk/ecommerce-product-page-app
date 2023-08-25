@@ -29,6 +29,7 @@ const productSlice = createSlice({
     reducers: {},
 });
 
+export const selectProductImages = (state) => state.product.img;
 export const selectProduct = (state) => state.product;
 
 export default productSlice.reducer;
