@@ -1,4 +1,4 @@
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Button, Paper, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import {
     selectAmount,
@@ -6,6 +6,7 @@ import {
     selectProducts,
 } from "../../store/cart/cartSlice";
 import { useTheme } from "@emotion/react";
+import CartItem from "../CartItem";
 
 const Modal = () => {
     const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const Modal = () => {
                 top: "58px",
                 left: "50%",
                 transform: "translateX(-50%)",
-                width: "380px",
+                width: "370px",
                 transition:
                     "opacity 0.1s ease-in-out, visibility 0.2s ease-in-out",
             }}
@@ -43,15 +44,30 @@ const Modal = () => {
             <Box
                 sx={{
                     padding: "1rem",
-                    minHeight: "200px",
-                    // display: "flex",
+                    minHeight: "180px",
                     gap: "1rem",
                 }}
             >
                 {amount ? (
                     <>
-                        <Box display="flex" flexDirection="column" gap={2}>
-                            {/* TODOOOOOOOOOOOO */}
+                        <Box display="flex" flexDirection="column" gap={3}>
+                            {cartProducts.map((product) => (
+                                <CartItem key={product.id} product={product} />
+                            ))}
+                            <Button
+                                variant="contained"
+                                disableElevation
+                                sx={{
+                                    fontWeight: "bold",
+                                    textTransform: "none",
+                                    fontSize: "17px",
+                                    color: theme.palette.neutral.white,
+                                    py: 1.5,
+                                    borderRadius: "10px",
+                                }}
+                            >
+                                Checkout
+                            </Button>
                         </Box>
                     </>
                 ) : (
@@ -62,8 +78,7 @@ const Modal = () => {
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
-                            height: "168px",
-                            // width: "100%",
+                            height: "148px",
                         }}
                     >
                         Your cart is empty

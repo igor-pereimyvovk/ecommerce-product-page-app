@@ -1,9 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
+import twoSmall from "../../assets/images/image-product-2-thumbnail.jpg";
 
 const initialState = {
     isOpen: false,
     amount: 0,
-    products: [],
+    products: [
+        // {
+        //     id: 2,
+        //     amount: 2,
+        //     img: twoSmall,
+        //     name: "Fall Limited Edition Sneaker fsdfsadfasfds",
+        //     priceByOne: 50,
+        //     totalPrice: 100,
+        // },
+        // {
+        //     id: 3,
+        //     amount: 3,
+        //     img: twoSmall,
+        //     name: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima rem ad, quasi laboriosam voluptate ducimus asperiores neque eius. Autem, totam ullam voluptate fugit vitae libero magni similique nam sapiente!",
+        //     priceByOne: 50,
+        //     totalPrice: 150,
+        // },
+        // {
+        //     id: 4,
+        //     amount: 1,
+        //     img: twoSmall,
+        //     name: "Lorem ipsum dolor sit amet.",
+        //     priceByOne: 50,
+        //     totalPrice: 50,
+        // },
+    ],
 };
 
 const cartSlice = createSlice({
@@ -30,14 +56,24 @@ const cartSlice = createSlice({
                 return {
                     payload: {
                         id: product.id,
-                        name: product.name,
                         img: product.img.small[0],
                         totalPrice: priceByOne * amount,
+                        name: product.name,
                         priceByOne,
                         amount,
                     },
                 };
             },
+        },
+        removeProduct(state, action) {
+            console.log(action.payload);
+            state.products = state.products.filter((product) => {
+                if (product.id === action.payload) {
+                    state.amount -= product.amount;
+                    return false;
+                }
+                return true;
+            });
         },
     },
 });
@@ -46,5 +82,6 @@ export const selectIsOpen = (state) => state.cart.isOpen;
 export const selectAmount = (state) => state.cart.amount;
 export const selectProducts = (state) => state.cart.products;
 
-export const { toggleCartModal, addProductToCart } = cartSlice.actions;
+export const { toggleCartModal, addProductToCart, removeProduct } =
+    cartSlice.actions;
 export default cartSlice.reducer;

@@ -1,13 +1,17 @@
 import { useTheme } from "@emotion/react";
 import { Box, Typography } from "@mui/material";
+import ProductButton from "./ProductButton";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const IncreaseDecreaseCountButton = ({ productCount, setProductCount }) => {
     const theme = useTheme();
 
-    const increaseCount = () => {
+    const increaseCount = (e) => {
+        e.stopPropagation();
         setProductCount((prev) => prev + 1);
     };
-    const decreaseCount = () => {
+    const decreaseCount = (e) => {
+        e.stopPropagation();
         if (productCount > 0) setProductCount((prev) => prev - 1);
     };
     return (
@@ -18,23 +22,11 @@ const IncreaseDecreaseCountButton = ({ productCount, setProductCount }) => {
             sx={{ background: "hsl(223, 64%, 96.5%)" }}
             // sx={{ background: theme.palette.neutral.lightGrayishBlue }}
         >
-            <Box
-                flex={1}
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                py={2.7}
-                sx={{
-                    cursor: "pointer",
-                    [":hover"]: {
-                        opacity: 0.5,
-                    },
-                }}
-                onClick={decreaseCount}
-            >
-                <svg
+            <ProductButton onClick={decreaseCount}>
+                {/* <svg
                     width="12"
                     height="4"
+                    viewBox="0 0 12 4"
                     xmlns="http://www.w3.org/2000/svg"
                     xmlnsXlink="http://www.w3.org/1999/xlink"
                 >
@@ -45,8 +37,9 @@ const IncreaseDecreaseCountButton = ({ productCount, setProductCount }) => {
                         />
                     </defs>
                     <use fill="#FF7E1B" xlinkHref="#a" />
-                </svg>
-            </Box>
+                </svg> */}
+                <RemoveIcon />
+            </ProductButton>
             <Typography
                 fontWeight="bold"
                 color={theme.palette.neutral.veryDarkBlue}
@@ -60,20 +53,7 @@ const IncreaseDecreaseCountButton = ({ productCount, setProductCount }) => {
             >
                 {productCount}
             </Typography>
-            <Box
-                flex={1}
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                py={2.7}
-                sx={{
-                    cursor: "pointer",
-                    [":hover"]: {
-                        opacity: 0.5,
-                    },
-                }}
-                onClick={increaseCount}
-            >
+            <ProductButton onClick={increaseCount}>
                 <svg
                     width="12"
                     height="12"
@@ -88,7 +68,7 @@ const IncreaseDecreaseCountButton = ({ productCount, setProductCount }) => {
                     </defs>
                     <use fill="#FF7E1B" xlinkHref="#b" />
                 </svg>
-            </Box>
+            </ProductButton>
         </Box>
     );
 };
