@@ -1,18 +1,33 @@
 import { useSelector } from "react-redux";
 import { selectProductImages } from "../store/product/productSlice";
-import { Box } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { useState } from "react";
 import { useTheme } from "@emotion/react";
 
 const ProductLeftSide = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [isModalOpen, setIsModalOpen] = useState(true);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const images = useSelector(selectProductImages);
 
     const theme = useTheme();
 
     const handleSmallImageClick = (index) => {
         setCurrentIndex(index);
+    };
+
+    const handlePreviousArrowClick = () => {
+        if (currentIndex === 0) {
+            setCurrentIndex(3);
+        } else {
+            setCurrentIndex(currentIndex - 1);
+        }
+    };
+    const handleNextArrowClick = () => {
+        if (currentIndex === 3) {
+            setCurrentIndex(0);
+        } else {
+            setCurrentIndex(currentIndex + 1);
+        }
     };
 
     return (
@@ -79,7 +94,7 @@ const ProductLeftSide = () => {
                         zIndex: 1,
                     }}
                 >
-                    <Box maxWidth="33%" minWidth="520px">
+                    <Box maxWidth="33%" minWidth="480px">
                         <Box display="flex" justifyContent="flex-end">
                             <Box
                                 sx={{ mb: 2, cursor: "pointer" }}
@@ -98,13 +113,81 @@ const ProductLeftSide = () => {
                                 </svg>
                             </Box>
                         </Box>
-                        <Box mb={4.8} borderRadius="10px" overflow="hidden">
+                        <Box mb={4.8} position="relative">
+                            <IconButton
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    position: "absolute",
+                                    left: "-25px",
+                                    top: "50%",
+                                    transform: "translateY(-50%)",
+                                    background: theme.palette.neutral.white,
+                                    width: "55px",
+                                    height: "55px",
+                                    [":hover"]: {
+                                        background: "hsla(0, 0%, 100%, 0.5)",
+                                    },
+                                }}
+                                onClick={handlePreviousArrowClick}
+                            >
+                                <svg
+                                    width="12"
+                                    height="18"
+                                    viewBox="0 0 12 18"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M11 1 3 9l8 8"
+                                        stroke="#1D2026"
+                                        strokeWidth="3"
+                                        fill="none"
+                                        // fill-rule="evenodd"
+                                    />
+                                </svg>
+                            </IconButton>
                             <img
-                                style={{ verticalAlign: "top" }}
+                                style={{
+                                    borderRadius: "10px",
+                                    verticalAlign: "top",
+                                    overflow: "hidden",
+                                }}
                                 width="100%"
                                 src={images.big[currentIndex]}
                                 alt="big"
                             />
+                            <IconButton
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    position: "absolute",
+                                    right: "-25px",
+                                    top: "50%",
+                                    transform: "translateY(-50%)",
+                                    background: theme.palette.neutral.white,
+                                    width: "55px",
+                                    height: "55px",
+                                    [":hover"]: {
+                                        background: "hsla(0, 0%, 100%, 0.5)",
+                                    },
+                                }}
+                                onClick={handleNextArrowClick}
+                            >
+                                <svg
+                                    width="13"
+                                    height="18"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="m2 1 8 8-8 8"
+                                        stroke="#1D2026"
+                                        strokeWidth="3"
+                                        fill="none"
+                                    />
+                                </svg>
+                            </IconButton>
                         </Box>
                         <Box display="flex" justifyContent="center" gap={4}>
                             {images.small.map((img, i) => (

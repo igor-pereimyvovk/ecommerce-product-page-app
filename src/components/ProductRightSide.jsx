@@ -40,8 +40,10 @@ const ProductRightSide = () => {
                     color: theme.palette.primary.main,
                     letterSpacing: "1.4px",
                     marginBottom: "1.3rem",
-                    ["@media(max-width:1440px)"]: {
-                        fontSize: "clamp(12px, 1.1vw, 16px)",
+                    ["@media(max-width:1150px)"]: {
+                        // fontSize: "clamp(12px, 1.1vw, 16px)",
+                        fontSize: "13px",
+                        marginBottom: "1rem",
                     },
                 }}
             >
@@ -54,8 +56,10 @@ const ProductRightSide = () => {
                     fontWeight: "bold",
                     color: theme.palette.neutral.veryDarkBlue,
                     marginBottom: "2rem",
-                    ["@media(max-width:1440px)"]: {
-                        fontSize: "clamp(35px, 3.4vw, 48px)",
+                    ["@media(max-width:1150px)"]: {
+                        // fontSize: "clamp(35px, 3.4vw, 48px)",
+                        fontSize: "34px",
+                        marginBottom: "1.2rem",
                     },
                 }}
             >
@@ -68,8 +72,11 @@ const ProductRightSide = () => {
                     fontSize: "18px",
                     letterSpacing: "1.1px",
                     marginBottom: "1.8rem",
-                    ["@media(max-width:1440px)"]: {
-                        fontSize: "clamp(12px, 1.3vw, 18px)",
+                    ["@media(max-width:1150px)"]: {
+                        // fontSize: "clamp(12px, 1.3vw, 18px)",
+                        fontSize: "16px",
+                        lineHeight: 1.5,
+                        marginBottom: "1.2rem",
                     },
                 }}
             >
@@ -80,6 +87,11 @@ const ProductRightSide = () => {
                 flexDirection="column"
                 alignItems="start"
                 marginBottom="1.8rem"
+                sx={{
+                    ["@media(max-width:1150px)"]: {
+                        marginBottom: "1.2rem",
+                    },
+                }}
                 // justifyContent="start"
             >
                 <Box
@@ -94,8 +106,9 @@ const ProductRightSide = () => {
                         variant="h4"
                         sx={{
                             fontWeight: "bold",
-                            ["@media(max-width:1440px)"]: {
-                                fontSize: "clamp(24px, 2.3vw, 34px)",
+                            ["@media(max-width:1150px)"]: {
+                                // fontSize: "clamp(24px, 2.3vw, 34px)",
+                                fontSize: "22px",
                             },
                         }}
                     >
@@ -131,6 +144,9 @@ const ProductRightSide = () => {
                                 left: 0,
                                 right: 0,
                                 background: theme.palette.neutral.grayishBlue,
+                            },
+                            ["@media(max-width:1150px)"]: {
+                                fontSize: "16px",
                             },
                         }}
                     >

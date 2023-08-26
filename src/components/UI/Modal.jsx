@@ -1,5 +1,5 @@
 import { Box, Button, Paper, Typography } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
     selectAmount,
     selectIsOpen,
@@ -29,12 +29,17 @@ const Modal = () => {
                 width: "370px",
                 transition:
                     "opacity 0.1s ease-in-out, visibility 0.2s ease-in-out",
+                ["@media(max-width:1300px)"]: {
+                    transform: "translateX(-67%)",
+                },
             }}
         >
             <Typography
                 variant="body1"
                 fontWeight="bold"
-                sx={{ padding: "1rem" }}
+                sx={{
+                    padding: "1rem",
+                }}
                 textAlign="left"
                 borderBottom="1px solid hsl(223, 64%, 94%)"
             >

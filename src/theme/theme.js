@@ -6,7 +6,7 @@ export const theme = createTheme({
             styleOverrides: {
                 root: {
                     padding: "0 100px",
-                    "@media(max-width:1350px)": {
+                    "@media(max-width:1300px)": {
                         padding: "0 50px",
                     },
                 },
