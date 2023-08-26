@@ -12,6 +12,9 @@ const ProductButton = styled("button")({
     [":hover"]: {
         opacity: 0.5,
     },
+    ["@media(max-width:1150px)"]: {
+        padding: "17px 0",
+    },
 });
 
 export default ProductButton;

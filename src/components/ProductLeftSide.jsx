@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectProductImages } from "../store/product/productSlice";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import { useTheme } from "@emotion/react";
 
@@ -8,6 +8,8 @@ const ProductLeftSide = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const images = useSelector(selectProductImages);
+
+    const media740px = useMediaQuery("@media(max-width:740px)");
 
     const theme = useTheme();
 
@@ -34,11 +36,26 @@ const ProductLeftSide = () => {
         <>
             <Box flex={1}>
                 <Box
-                    mb={4}
+                    mb={!media740px && 4}
                     borderRadius="10px"
                     overflow="hidden"
-                    sx={{ cursor: "pointer" }}
-                    onClick={() => setIsModalOpen(true)}
+                    sx={{
+                        cursor: "pointer",
+                        ["@media(max-width:740px)"]: {
+                            maxHeight: "340px",
+                            cursor: "default",
+                        },
+                        ["@media(max-width:435px)"]: {
+                            borderRadius: "0",
+                            width: "100%",
+                            height: "270px",
+                        },
+                    }}
+                    onClick={() => {
+                        if (!media740px) {
+                            setIsModalOpen(true);
+                        }
+                    }}
                 >
                     <img
                         style={{ verticalAlign: "top" }}
@@ -47,41 +64,43 @@ const ProductLeftSide = () => {
                         alt="big"
                     />
                 </Box>
-                <Box display="flex" justifyContent="space-between">
-                    {images.small.map((img, i) => (
-                        <Box
-                            key={img}
-                            sx={{
-                                borderRadius: "13px",
-                                width: "20%",
-                                cursor: "pointer",
-                                border:
-                                    currentIndex === i &&
-                                    `2px solid ${theme.palette.primary.main}`,
-                                ":hover": {
-                                    opacity: currentIndex !== i && 0.5,
-                                },
-                            }}
-                            onClick={() => handleSmallImageClick(i)}
-                        >
-                            <img
-                                style={{
-                                    opacity: currentIndex === i && 0.27,
-                                    borderRadius: "10px",
-                                    verticalAlign: "top",
+                {!media740px && (
+                    <Box display="flex" justifyContent="space-between">
+                        {images.small.map((img, i) => (
+                            <Box
+                                key={img}
+                                sx={{
+                                    borderRadius: "13px",
+                                    width: "20%",
+                                    cursor: "pointer",
+                                    border:
+                                        currentIndex === i &&
+                                        `2px solid ${theme.palette.primary.main}`,
+                                    ":hover": {
+                                        opacity: currentIndex !== i && 0.5,
+                                    },
                                 }}
-                                height="100%"
-                                width="100%"
-                                src={img}
-                                alt="small"
-                            />
-                        </Box>
-                    ))}
-                </Box>
+                                onClick={() => handleSmallImageClick(i)}
+                            >
+                                <img
+                                    style={{
+                                        opacity: currentIndex === i && 0.27,
+                                        borderRadius: "10px",
+                                        verticalAlign: "top",
+                                    }}
+                                    height="100%"
+                                    width="100%"
+                                    src={img}
+                                    alt="small"
+                                />
+                            </Box>
+                        ))}
+                    </Box>
+                )}
             </Box>
             {isModalOpen && (
                 <Box
-                    position="absolute"
+                    position="fixed"
                     sx={{
                         top: 0,
                         bottom: 0,
@@ -94,7 +113,18 @@ const ProductLeftSide = () => {
                         zIndex: 1,
                     }}
                 >
-                    <Box maxWidth="33%" minWidth="480px">
+                    <Box
+                        width="33%"
+                        // maxHeight="400px"
+                        // minWidth="400px"
+                        sx={
+                            {
+                                // ["@media(max-width:800px)"]: {
+                                //     maxWidth: "470px",
+                                // },
+                            }
+                        }
+                    >
                         <Box display="flex" justifyContent="flex-end">
                             <Box
                                 sx={{ mb: 2, cursor: "pointer" }}

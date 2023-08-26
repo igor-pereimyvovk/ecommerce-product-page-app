@@ -9,6 +9,9 @@ export const theme = createTheme({
                     "@media(max-width:1300px)": {
                         padding: "0 50px",
                     },
+                    "@media(max-width:435px)": {
+                        padding: "0",
+                    },
                 },
             },
         },

@@ -33,7 +33,15 @@ const ProductRightSide = () => {
     };
 
     return (
-        <Box flex={1} justifySelf="center">
+        <Box
+            flex={1}
+            justifySelf="center"
+            sx={{
+                ["@media(max-width:435px)"]: {
+                    p: "0 1.6rem",
+                },
+            }}
+        >
             <Typography
                 sx={{
                     fontWeight: "bold",
@@ -41,9 +49,12 @@ const ProductRightSide = () => {
                     letterSpacing: "1.4px",
                     marginBottom: "1.3rem",
                     ["@media(max-width:1150px)"]: {
-                        // fontSize: "clamp(12px, 1.1vw, 16px)",
                         fontSize: "13px",
                         marginBottom: "1rem",
+                    },
+                    ["@media(max-width:860px)"]: {
+                        fontSize: "12px",
+                        marginBottom: "0.5rem",
                     },
                 }}
             >
@@ -57,9 +68,12 @@ const ProductRightSide = () => {
                     color: theme.palette.neutral.veryDarkBlue,
                     marginBottom: "2rem",
                     ["@media(max-width:1150px)"]: {
-                        // fontSize: "clamp(35px, 3.4vw, 48px)",
                         fontSize: "34px",
                         marginBottom: "1.2rem",
+                    },
+                    ["@media(max-width:860px)"]: {
+                        fontSize: "28px",
+                        marginBottom: "0.9rem",
                     },
                 }}
             >
@@ -73,10 +87,14 @@ const ProductRightSide = () => {
                     letterSpacing: "1.1px",
                     marginBottom: "1.8rem",
                     ["@media(max-width:1150px)"]: {
-                        // fontSize: "clamp(12px, 1.3vw, 18px)",
                         fontSize: "16px",
                         lineHeight: 1.5,
                         marginBottom: "1.2rem",
+                    },
+                    ["@media(max-width:860px)"]: {
+                        letterSpacing: "0.5px",
+                        fontSize: "14px",
+                        lineHeight: 1.6,
                     },
                 }}
             >
@@ -91,6 +109,19 @@ const ProductRightSide = () => {
                     ["@media(max-width:1150px)"]: {
                         marginBottom: "1.2rem",
                     },
+                    ["@media(max-width:860px)"]: {
+                        marginBottom: "0.8rem",
+                    },
+                    ["@media(max-width:740px)"]: {
+                        marginBottom: "0",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        mb: "0.5rem",
+                    },
+                    ["@media(max-width:450px)"]: {
+                        mb: "1.8rem",
+                    },
                 }}
                 // justifyContent="start"
             >
@@ -100,6 +131,9 @@ const ProductRightSide = () => {
                         gap: "20px",
                         alignItems: "center",
                         marginBottom: "0.6rem",
+                        ["@media(max-width:740px)"]: {
+                            m: "0",
+                        },
                     }}
                 >
                     <Typography
@@ -107,8 +141,13 @@ const ProductRightSide = () => {
                         sx={{
                             fontWeight: "bold",
                             ["@media(max-width:1150px)"]: {
-                                // fontSize: "clamp(24px, 2.3vw, 34px)",
                                 fontSize: "22px",
+                            },
+                            ["@media(max-width:860px)"]: {
+                                fontSize: "20px",
+                            },
+                            ["@media(max-width:450px)"]: {
+                                fontSize: "28px",
                             },
                         }}
                     >
@@ -160,6 +199,13 @@ const ProductRightSide = () => {
                 justifyContent="space-between"
                 alignItems="center"
                 gap="35px"
+                sx={{
+                    ["@media(max-width:435px)"]: {
+                        flexDirection: "column",
+                        alignItems: "normal",
+                        gap: "20px",
+                    },
+                }}
             >
                 <IncreaseDecreaseCountButton
                     productCount={productCount}
@@ -185,6 +231,12 @@ const ProductRightSide = () => {
                             fontSize: "11px",
                             py: 1.9,
                             gap: "12px",
+                        },
+                        ["@media(max-width:1150px)"]: {
+                            flex: 1.1,
+                            fontSize: "13px",
+                            py: 1.5,
+                            gap: "10px",
                         },
                     }}
                 >

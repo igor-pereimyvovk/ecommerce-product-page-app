@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsOpen, toggleCartModal } from "../../store/cart/cartSlice";
 import Modal from "./Modal";
@@ -8,6 +8,8 @@ import { useEffect } from "react";
 const CartWithModal = () => {
     const dispatch = useDispatch();
     const isOpen = useSelector(selectIsOpen);
+
+    const media435px = useMediaQuery("@media(max-width:435px)");
 
     useEffect(() => {
         const handleClick = () => {
@@ -21,8 +23,12 @@ const CartWithModal = () => {
             document.removeEventListener("click", handleClick);
         };
     }, [isOpen]);
+
     return (
-        <Box position="relative" onClick={(e) => e.stopPropagation()}>
+        <Box
+            position={!media435px && "relative"}
+            onClick={(e) => e.stopPropagation()}
+        >
             <CartSvgIcon />
             <Modal />
         </Box>

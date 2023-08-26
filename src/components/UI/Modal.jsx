@@ -30,7 +30,16 @@ const Modal = () => {
                 transition:
                     "opacity 0.1s ease-in-out, visibility 0.2s ease-in-out",
                 ["@media(max-width:1300px)"]: {
-                    transform: "translateX(-67%)",
+                    transform: "translateX(-71%)",
+                },
+                ["@media(max-width:435px)"]: {
+                    transform: "translateX(0%)",
+                    left: "0",
+                    right: "0",
+                    margin: "0 auto",
+                    borderRadius: "12px",
+                    width: "360px",
+                    top: "80px",
                 },
             }}
         >
@@ -39,6 +48,9 @@ const Modal = () => {
                 fontWeight="bold"
                 sx={{
                     padding: "1rem",
+                    ["@media(max-width:435px)"]: {
+                        padding: "0.7rem",
+                    },
                 }}
                 textAlign="left"
                 borderBottom="1px solid hsl(223, 64%, 94%)"
@@ -50,6 +62,10 @@ const Modal = () => {
                     padding: "1rem",
                     minHeight: "180px",
                     gap: "1rem",
+                    padding: "1rem",
+                    ["@media(max-width:435px)"]: {
+                        padding: "0.7rem",
+                    },
                 }}
             >
                 {amount ? (

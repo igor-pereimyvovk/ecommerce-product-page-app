@@ -1,4 +1,4 @@
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, IconButton, Typography, useMediaQuery } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAmount, toggleCartModal } from "../../store/cart/cartSlice";
 import { useTheme } from "@emotion/react";
@@ -9,6 +9,8 @@ const CartSvgIcon = () => {
 
     const theme = useTheme();
 
+    const media435px = useMediaQuery("@media(max-width:435px)");
+
     return (
         <IconButton
             onClick={(e) => {
@@ -16,7 +18,6 @@ const CartSvgIcon = () => {
                 dispatch(toggleCartModal());
             }}
             sx={{
-                position: "relative",
                 cursor: "pointer",
                 display: "flex",
                 borderRadius: "50%",
