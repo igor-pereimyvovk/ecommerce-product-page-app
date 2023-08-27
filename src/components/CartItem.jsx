@@ -11,7 +11,6 @@ const CartItem = ({
     const theme = useTheme();
 
     const removeItem = () => {
-        console.log("clicked");
         dispatch(removeProduct(id));
     };
 

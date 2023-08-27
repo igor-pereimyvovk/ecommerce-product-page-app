@@ -22,8 +22,6 @@ const ProductRightSide = () => {
         discountPrice = calculateDiscountPrice(price, discount);
     }
 
-    console.log(products);
-
     const handleClick = (e) => {
         e.stopPropagation();
         if (productCount) {
