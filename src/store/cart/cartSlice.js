@@ -66,7 +66,6 @@ const cartSlice = createSlice({
             },
         },
         removeProduct(state, action) {
-            console.log(action.payload);
             state.products = state.products.filter((product) => {
                 if (product.id === action.payload) {
                     state.amount -= product.amount;
