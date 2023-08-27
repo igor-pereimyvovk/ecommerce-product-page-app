@@ -46,7 +46,7 @@ const Navbar = () => {
                         </IconButton>
                         {isMobileMenuOpen && (
                             <Box
-                                position="absolute"
+                                position="fixed"
                                 sx={{
                                     top: 0,
                                     left: 0,
@@ -62,6 +62,14 @@ const Navbar = () => {
                                         width: "35%",
                                         background: theme.palette.neutral.white,
                                         padding: "2.8rem 3.6rem",
+                                        ["@media(max-width:740px)"]: {
+                                            padding: "2rem 3.6rem",
+                                            width: "65%",
+                                        },
+                                        ["@media(max-width:435px)"]: {
+                                            padding: "1.7rem 2.2rem",
+                                            width: "67%",
+                                        },
                                     }}
                                 >
                                     <Box
@@ -99,6 +107,10 @@ const Navbar = () => {
                                                     [":hover"]: {
                                                         opacity: 0.7,
                                                     },
+                                                    ["@media(max-width:435px)"]:
+                                                        {
+                                                            fontSize: "19px",
+                                                        },
                                                 }}
                                                 onClick={() =>
                                                     handleClickedCategory(item)

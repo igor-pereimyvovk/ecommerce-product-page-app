@@ -10,6 +10,7 @@ const ProductLeftSide = () => {
     const images = useSelector(selectProductImages);
 
     const media740px = useMediaQuery("@media(max-width:740px)");
+    const media435px = useMediaQuery("@media(max-width:435px)");
 
     const theme = useTheme();
 
@@ -36,6 +37,7 @@ const ProductLeftSide = () => {
         <>
             <Box flex={1}>
                 <Box
+                    position="relative"
                     mb={!media740px && 4}
                     borderRadius="10px"
                     overflow="hidden"
@@ -57,12 +59,81 @@ const ProductLeftSide = () => {
                         }
                     }}
                 >
+                    {media740px && (
+                        <IconButton
+                            sx={{
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                position: "absolute",
+                                left: "15px",
+                                top: "50%",
+                                transform: "translateY(-50%)",
+                                background: theme.palette.neutral.white,
+                                width: "40px",
+                                height: "40px",
+                                [":hover"]: {
+                                    background: "hsla(0, 0%, 100%, 0.5)",
+                                },
+                            }}
+                            onClick={handlePreviousArrowClick}
+                        >
+                            <svg
+                                width="10"
+                                height="15"
+                                viewBox="0 0 12 18"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M11 1 3 9l8 8"
+                                    stroke="#1D2026"
+                                    strokeWidth="3"
+                                    fill="none"
+                                    // fill-rule="evenodd"
+                                />
+                            </svg>
+                        </IconButton>
+                    )}
                     <img
                         style={{ verticalAlign: "top" }}
                         width="100%"
                         src={images.big[currentIndex]}
                         alt="big"
                     />
+                    {media740px && (
+                        <IconButton
+                            sx={{
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                position: "absolute",
+                                right: "15px",
+                                top: "50%",
+                                transform: "translateY(-50%)",
+                                background: theme.palette.neutral.white,
+                                width: "40px",
+                                height: "40px",
+                                [":hover"]: {
+                                    background: "hsla(0, 0%, 100%, 0.5)",
+                                },
+                            }}
+                            onClick={handlePreviousArrowClick}
+                        >
+                            <svg
+                                width="10"
+                                height="15"
+                                viewBox="0 0 12 18"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="m2 1 8 8-8 8"
+                                    stroke="#1D2026"
+                                    strokeWidth="3"
+                                    fill="none"
+                                />
+                            </svg>
+                        </IconButton>
+                    )}
                 </Box>
                 {!media740px && (
                     <Box display="flex" justifyContent="space-between">

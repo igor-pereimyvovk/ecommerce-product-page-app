@@ -27,6 +27,7 @@ const Modal = () => {
                 left: "50%",
                 transform: "translateX(-50%)",
                 width: "370px",
+                zIndex: 3,
                 transition:
                     "opacity 0.1s ease-in-out, visibility 0.2s ease-in-out",
                 ["@media(max-width:1300px)"]: {
